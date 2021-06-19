@@ -1,0 +1,77 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                {{$data := index .Data "search"}}
+                <form action="search" method="post" class="needs-validation" novalidate>
+                  <div class="form-row mb-5 mt-5">
+                      <div class="col">
+                          <div class="form-row" id="reservation-dates">
+                            <div class="col">
+                              <input required type="text" class="form-control {{with .Form.Error.Get "site"}} is-invalid {{end}}" name="site" placeholder="site" value="{{$data.Site}}">
+                            </div>
+                            <div class="col">
+                              <input required type="text" class="form-control {{with .Form.Error.Get "tool"}} is-invalid {{end}}" name="tool" placeholder="tool" value="{{$data.Tool}}">  
+                            </div>
+                            <div class="col">
+                              <input required type="text" class="form-control {{with .Form.Error.Get "status"}} is-invalid {{end}}" name="status" placeholder="status" value="{{$data.Status}}">  
+                            </div>
+                            <div class="col">
+                              <input required type="date" class="form-control {{with .Form.Error.Get "date"}} is-invalid {{end}}" name="date" placeholder="date" value="{{$data.Date}}">  
+                            </div>
+                            <div class="col">
+                              <input required type="time" class="form-control {{with .Form.Error.Get "time"}} is-invalid {{end}}" name="time" placeholder="time" step="2" value="{{$data.Time}}">  
+                            </div>
+                            <div class="col">
+                              <button type="submit" class="btn btn-success">Search</button>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h4 class="mt-3 mb-3">Result of {{$data.Site}} / {{$data.Tool}} / {{$data.Status}} / {{$data.Date}} {{$data.Time}}</h4>
+                {{$res := index .Data "response"}}
+                <div class="form-row mb-3">
+                    <div class="col-sd-2">
+                        <button class="btn {{if eq $res.TYPE "ProcessStart"}}btn-success{{else}} btn-secondary {{end}}">Process Start</button>
+                    </div>
+                    <div class="col-sd-2">
+                        <button class="btn {{if eq $res.TYPE "InProcess"}}btn-success{{else}} btn-secondary {{end}}">In Process</button>
+                    </div>
+                    <div class="col-sd-2">
+                        <button class="btn {{if eq $res.TYPE "ProcessComplete"}}btn-success{{else}} btn-secondary {{end}}">Process Complete</button>
+                    </div>
+                    <div class="col-sd-2">
+                        <button class="btn {{if eq $res.TYPE "ProcessEnd"}}btn-success{{else}} btn-secondary {{end}}">Process End</button>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead></thead>
+                    <tbody>
+                        <tr>
+                            <td>第一列 </td>
+                            <td>{{$res.STATUS}}</td>
+                            <td>{{$res.MESSAGE}}</td>
+                            <td>{{$res.MESSAGE}}</td>
+                        </tr>
+                        <tr>
+                            <td>第二列 </td>
+                            <td>{{$res.STATUS}}</td>
+                            <td>{{$res.MESSAGE}}</td>
+                            <td>{{$res.MESSAGE}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{{end}}

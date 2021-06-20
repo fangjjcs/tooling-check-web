@@ -8,4 +8,4 @@
 - Uses [Alex Edwards SCS session](https://github.com/alexedwards/scs/v2) management
 
 ### How to execute
-./runsh
+./run.sh

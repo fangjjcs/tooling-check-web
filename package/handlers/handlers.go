@@ -11,10 +11,9 @@ import (
 	"github.com/fangjjcs/tooling/package/search"
 )
 
-// Repo the repository used by the handlers
+// the repository used by the handlers
 var Repo *Repository
 
-// Repository is the repository type
 // Repository is the repository type
 type Repository struct {
 	App *config.AppConfig
@@ -42,7 +41,7 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 }
 
 
-// MakeReservation is the handler for the MakeReservation page
+// Search is the handler for the Search page
 func (m *Repository) Search(w http.ResponseWriter, r *http.Request) {
 
 	log.Println("search")
@@ -60,7 +59,7 @@ func (m *Repository) Search(w http.ResponseWriter, r *http.Request) {
 
 
 
-// PostMakeReservation is the handler for Post the reservation form
+// PostSearch is the handler for Post the Search form
 func (m *Repository) PostSearch(w http.ResponseWriter, r *http.Request) {
 	log.Println("post")
 	post := search.GetFormData(r)

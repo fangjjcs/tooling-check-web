@@ -44,6 +44,7 @@ func ConnectDB(search *models.Search) (Response, error) {
 	// 	log.Fatal("Connection Failed")
 	// 	return Response{}, err
 	// }
+	
 	//defer DB.Close()
 	//************************************//
 

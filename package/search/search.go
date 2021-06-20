@@ -45,6 +45,7 @@ func ConnectDB(search *models.Search) (Response, error) {
 	// 	return Response{}, err
 	// }
 
+	//defer DB.Close()
 	//************************************//
 
 	res, err := Post(DB,search,10)
@@ -52,6 +53,8 @@ func ConnectDB(search *models.Search) (Response, error) {
 		log.Fatal("Search Failed")
 		return Response{}, err
 	}
+
+	
 
 	return res, nil
 
